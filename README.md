@@ -1,20 +1,68 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
-</div>
+# Akademika - Sistem Informasi Mahasiswa Terpadu
 
-# Run and deploy your AI Studio app
+![Flutter](https://img.shields.io/badge/Frontend-Flutter-blue?style=for-the-badge&logo=flutter)
+![Laravel](https://img.shields.io/badge/Backend-Laravel-red?style=for-the-badge&logo=laravel)
+![Status](https://img.shields.io/badge/Status-Completed-success?style=for-the-badge)
 
-This contains everything you need to run your app locally.
+Akademika adalah aplikasi sistem informasi akademik mahasiswa berbasis mobile (Flutter) yang terintegrasi dengan backend REST API (Laravel). Aplikasi ini dirancang untuk mempermudah pengelolaan data akademik mahasiswa, termasuk fitur Kartu Tanda Mahasiswa (KTM) Digital, asisten AI, dan pengelolaan Rencana Studi.
 
-View your app in AI Studio: https://ai.studio/apps/c2ceb23c-a481-45d2-940d-063eb49be5eb
+## 🚀 Fitur Utama
 
-## Run Locally
+- **Otentikasi Aman**: Login mahasiswa terintegrasi dengan Laravel Sanctum.
+- **KTM Digital 3D**: Kartu Tanda Mahasiswa interaktif berbasis 3D.
+- **Asisten AI Akademika**: Fitur tanya jawab cerdas seputar akademik.
+- **Manajemen KRS**: Pengelolaan dan tampilan Kartu Rencana Studi terstruktur berdasarkan semester.
+- **CRUD Mahasiswa Lengkap**: Fitur kelola data mahasiswa, termasuk unggah foto profil (Multipart upload).
+- **Dokumentasi API**: Terintegrasi otomatis menggunakan Swagger (L5-Swagger).
 
-**Prerequisites:**  Node.js
+## 🛠️ Teknologi yang Digunakan
 
+### Backend (REST API)
+- **Framework**: Laravel 11.x
+- **Autentikasi**: Laravel Sanctum
+- **Dokumentasi API**: L5-Swagger (OpenAPI)
+- **Database**: SQLite / MySQL
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+### Frontend (Mobile App)
+- **Framework**: Flutter
+- **HTTP Client**: `http` package
+- **State Management**: Provider
+- **UI/UX**: Material Design dengan kustomisasi font Poppins & Branding UNIKOM
+
+## 📂 Struktur Proyek
+
+Proyek ini menggunakan arsitektur monorepo sederhana yang memisahkan frontend dan backend:
+
+- `/akademika-api` - Berisi source code backend Laravel.
+- `/AkademikaFlutter` - Berisi source code frontend Flutter.
+
+## ⚙️ Panduan Instalasi & Menjalankan Aplikasi
+
+### 1. Menjalankan Backend (Laravel)
+Pastikan PHP, Composer, dan ekstensi SQLite/MySQL sudah terinstall.
+
+```bash
+cd akademika-api
+cp .env.example .env
+composer install
+php artisan key:generate
+php artisan migrate --seed
+php artisan storage:link
+php artisan serve
+```
+> **Catatan:** API akan berjalan di `http://localhost:8000`. Dokumentasi Swagger tersedia di `http://localhost:8000/api/documentation`.
+
+### 2. Menjalankan Frontend (Flutter)
+Pastikan Flutter SDK sudah terinstall dan perangkat (emulator/fisik) sudah siap.
+
+```bash
+cd AkademikaFlutter
+flutter pub get
+flutter run
+```
+> **Catatan:** Jika menggunakan emulator Android, URL backend pada `lib/services/api_service.dart` menggunakan `10.0.2.2`. Sesuaikan dengan IP lokal jika menggunakan device fisik.
+
+## 👨‍💻 Pengembang
+
+Dikembangkan oleh **Akmal Putra Septian**
+*Teknik Komputer 24 • Universitas Komputer Indonesia (UNIKOM)*
