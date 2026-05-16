@@ -1,45 +1,45 @@
-# Akademika - Sistem Informasi Mahasiswa Terpadu
+# Akademika - Academic Information System
 
 ![Flutter](https://img.shields.io/badge/Frontend-Flutter-blue?style=for-the-badge&logo=flutter)
 ![Laravel](https://img.shields.io/badge/Backend-Laravel-red?style=for-the-badge&logo=laravel)
 ![Status](https://img.shields.io/badge/Status-Completed-success?style=for-the-badge)
 
-Akademika adalah aplikasi sistem informasi akademik mahasiswa berbasis mobile (Flutter) yang terintegrasi dengan backend REST API (Laravel). Aplikasi ini dirancang untuk mempermudah pengelolaan data akademik mahasiswa, termasuk fitur Kartu Tanda Mahasiswa (KTM) Digital, asisten AI, dan pengelolaan Rencana Studi.
+A mobile-first academic information system built with Flutter and backed by a Laravel RESTful API. Designed for efficient management of academic data, including digital identification, AI assistance, and study plan administration.
 
-## 🚀 Fitur Utama
+## Core Features
 
-- **Otentikasi Aman**: Login mahasiswa terintegrasi dengan Laravel Sanctum.
-- **KTM Digital 3D**: Kartu Tanda Mahasiswa interaktif berbasis 3D.
-- **Asisten AI Akademika**: Fitur tanya jawab cerdas seputar akademik.
-- **Manajemen KRS**: Pengelolaan dan tampilan Kartu Rencana Studi terstruktur berdasarkan semester.
-- **CRUD Mahasiswa Lengkap**: Fitur kelola data mahasiswa, termasuk unggah foto profil (Multipart upload).
-- **Dokumentasi API**: Terintegrasi otomatis menggunakan Swagger (L5-Swagger).
+- **Secure Authentication**: Laravel Sanctum based token authentication.
+- **3D Digital ID**: Interactive 3D rendering of the student identification card.
+- **AI Assistant**: Integrated AI query system for academic-related contexts.
+- **Study Plan Management (KRS)**: Structured viewing and management of student curriculums by semester.
+- **Complete CRUD Operations**: Full student data management including multipart profile picture uploads.
+- **Automated API Documentation**: OpenAPI specification generated via L5-Swagger.
 
-## 🛠️ Teknologi yang Digunakan
+## Technical Stack
 
 ### Backend (REST API)
 - **Framework**: Laravel 11.x
-- **Autentikasi**: Laravel Sanctum
-- **Dokumentasi API**: L5-Swagger (OpenAPI)
+- **Auth**: Laravel Sanctum
+- **Docs**: L5-Swagger (OpenAPI)
 - **Database**: SQLite / MySQL
 
-### Frontend (Mobile App)
+### Frontend (Mobile Application)
 - **Framework**: Flutter
-- **HTTP Client**: `http` package
+- **HTTP Client**: `http`
 - **State Management**: Provider
-- **UI/UX**: Material Design dengan kustomisasi font Poppins & Branding UNIKOM
+- **Design System**: Material Design (Custom Poppins Typography)
 
-## 📂 Struktur Proyek
+## Project Structure
 
-Proyek ini menggunakan arsitektur monorepo sederhana yang memisahkan frontend dan backend:
+A simple monorepo structure separating the client and server applications:
 
-- `/akademika-api` - Berisi source code backend Laravel.
-- `/AkademikaFlutter` - Berisi source code frontend Flutter.
+- `/akademika-api` - Laravel backend source code.
+- `/AkademikaFlutter` - Flutter frontend source code.
 
-## ⚙️ Panduan Instalasi & Menjalankan Aplikasi
+## Local Development Guide
 
-### 1. Menjalankan Backend (Laravel)
-Pastikan PHP, Composer, dan ekstensi SQLite/MySQL sudah terinstall.
+### 1. Backend Setup (Laravel)
+Ensure PHP, Composer, and the required database extensions are installed.
 
 ```bash
 cd akademika-api
@@ -50,19 +50,18 @@ php artisan migrate --seed
 php artisan storage:link
 php artisan serve
 ```
-> **Catatan:** API akan berjalan di `http://localhost:8000`. Dokumentasi Swagger tersedia di `http://localhost:8000/api/documentation`.
+> Note: The API serves on `http://localhost:8000`. Swagger documentation is accessible at `http://localhost:8000/api/documentation`.
 
-### 2. Menjalankan Frontend (Flutter)
-Pastikan Flutter SDK sudah terinstall dan perangkat (emulator/fisik) sudah siap.
+### 2. Frontend Setup (Flutter)
+Ensure the Flutter SDK is installed and a target device is running.
 
 ```bash
 cd AkademikaFlutter
 flutter pub get
 flutter run
 ```
-> **Catatan:** Jika menggunakan emulator Android, URL backend pada `lib/services/api_service.dart` menggunakan `10.0.2.2`. Sesuaikan dengan IP lokal jika menggunakan device fisik.
+> Note: For Android emulators, the backend URL in `lib/services/api_service.dart` defaults to `10.0.2.2`. Adjust to your local IPv4 address if testing on a physical device.
 
-## 👨‍💻 Pengembang
-
-Dikembangkan oleh **Akmal Putra Septian**
-*Teknik Komputer 24 • Universitas Komputer Indonesia (UNIKOM)*
+---
+**Developed by Akmal Putra Septian**  
+*Computer Engineering 24 • Universitas Komputer Indonesia (UNIKOM)*
