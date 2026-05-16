@@ -1,0 +1,59 @@
+@import "tailwindcss";
+
+@theme {
+  --font-headline: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+
+  --color-primary: #316483;
+  --color-primary-container: #a6d8fb;
+  --color-on-primary: #f5f9ff;
+  --color-on-primary-container: #124c6a;
+
+  --color-secondary: #50616e;
+  --color-secondary-container: #d2e5f5;
+  --color-on-secondary: #f5f9ff;
+  --color-on-secondary-container: #425461;
+
+  --color-tertiary: #565d85;
+  --color-tertiary-container: #c9cffe;
+  --color-on-tertiary: #faf8ff;
+  --color-on-tertiary-container: #3e456c;
+
+  --color-error: #a83836;
+  --color-error-container: #fa746f;
+  --color-on-error: #fff7f6;
+  --color-on-error-container: #6e0a12;
+
+  --color-background: #f8f9fd;
+  --color-on-background: #2c3339;
+
+  --color-surface: #f8f9fd;
+  --color-on-surface: #2c3339;
+  --color-surface-variant: #dce3eb;
+  --color-on-surface-variant: #596066;
+
+  --color-outline: #747c82;
+  --color-outline-variant: #acb3ba;
+
+  --color-surface-container-lowest: #ffffff;
+  --color-surface-container-low: #f0f4f9;
+  --color-surface-container: #eaeef4;
+  --color-surface-container-high: #e3e9ef;
+  --color-surface-container-highest: #dce3eb;
+}
+
+@layer utilities {
+  .scrollbar-hide {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none; /* Safari and Chrome */
+  }
+}
+
+@layer base {
+  body {
+    @apply bg-background text-on-background font-sans;
+  }
+}

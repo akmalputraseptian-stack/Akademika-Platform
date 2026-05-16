@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Laporan Pekan 5</title>
+    <style>
+        body {
+            font-family: "Times New Roman", Times, serif;
+            line-height: 1.5;
+            margin: 40px;
+        }
+        .cover {
+            text-align: center;
+            margin-top: 50px;
+            margin-bottom: 100px;
+            page-break-after: always;
+        }
+        .cover h1 {
+            font-size: 24px;
+            text-transform: uppercase;
+        }
+        .cover h2 {
+            font-size: 20px;
+            margin-bottom: 40px;
+        }
+        .cover p {
+            font-size: 16px;
+        }
+        .identitas {
+            margin-top: 50px;
+            margin-bottom: 50px;
+            font-size: 16px;
+            font-weight: bold;
+        }
+        .institusi {
+            margin-top: 80px;
+            font-size: 18px;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+        h1.bab {
+            text-align: center;
+            font-size: 18px;
+            text-transform: uppercase;
+            margin-top: 30px;
+        }
+        h2 {
+            font-size: 16px;
+        }
+        h3 {
+            font-size: 14px;
+        }
+        p, li {
+            font-size: 12px;
+            text-align: justify;
+        }
+        .code-block {
+            font-family: "Courier New", Courier, monospace;
+            background-color: #f4f4f4;
+            padding: 10px;
+            border: 1px solid #ddd;
+            font-size: 11px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HALAMAN COVER -->
+    <div class="cover">
+        <h1>LAPORAN TUGAS PEKAN 5</h1>
+        <h2>Mata Kuliah: Pemrograman Mobile</h2>
+        <br><br>
+        <p><strong>Topik:</strong></p>
+        <p>Integrasi API Mahasiswa (Laravel Backend & Flutter Frontend)</p>
+        
+        <br><br><br>
+        <!-- Placeholder untuk Logo -->
+        <p>[ TEMPATKAN LOGO UNIKOM DI SINI ]</p>
+        <br><br><br>
+
+        <div class="identitas">
+            <p>Disusun Oleh:</p>
+            <p>Nama: Akmal Putra Septian</p>
+            <p>NIM: 10824002</p>
+            <p>Kelas: Teknik Komputer 24</p>
+        </div>
+
+        <div class="institusi">
+            <p>PROGRAM STUDI TEKNIK KOMPUTER</p>
+            <p>UNIVERSITAS KOMPUTER INDONESIA</p>
+            <p>2026</p>
+        </div>
+    </div>
+
+    <!-- ISI LAPORAN -->
+    <h1 class="bab">BAB I<br>PENDAHULUAN</h1>
+    
+    <h2>1.1 Deskripsi Tugas</h2>
+    <p>Tugas pekan ini difokuskan pada pembuatan Backend berbasis REST API menggunakan framework Laravel dan integrasinya dengan aplikasi Frontend menggunakan Flutter. Fungsionalitas utama yang diimplementasikan mencakup operasi CRUD (Create, Read, Update, Delete) untuk data mahasiswa, pembuatan dokumentasi API otomatis menggunakan Swagger, serta implementasi fitur upload foto profil.</p>
+
+    <h1 class="bab">BAB II<br>IMPLEMENTASI BACKEND (LARAVEL API)</h1>
+
+    <h2>2.1 Migration & Model</h2>
+    <p>Tabel <code>mahasiswas</code> dirancang untuk menyimpan data akademik mahasiswa secara komprehensif. Kolom yang tersedia meliputi: <code>nim</code>, <code>nama</code>, <code>jurusan</code>, <code>angkatan</code>, <code>email</code>, <code>status</code>, <code>gpa</code>, <code>sks</code>, <code>profilePic</code>, <code>class</code>, dan <code>password</code>.</p>
+    <p>Model <code>Mahasiswa.php</code> menggunakan trait <code>HasApiTokens</code> untuk mendukung integrasi autentikasi menggunakan Laravel Sanctum.</p>
+
+    <h2>2.2 Controller (CRUD)</h2>
+    <p>Logika bisnis untuk API dikelola dalam <code>MahasiswaController.php</code> yang terdiri dari beberapa fungsi utama:</p>
+    <ul>
+        <li><strong>index()</strong>: Mengambil seluruh data mahasiswa dari database.</li>
+        <li><strong>store()</strong>: Melakukan validasi input, memproses upload file foto ke storage, dan menyimpan data baru ke database.</li>
+        <li><strong>show($id)</strong>: Mengambil dan menampilkan detail spesifik dari satu mahasiswa berdasarkan ID.</li>
+        <li><strong>update(Request $request, $id)</strong>: Memperbarui data mahasiswa yang sudah ada di database.</li>
+        <li><strong>destroy($id)</strong>: Menghapus data mahasiswa secara permanen.</li>
+    </ul>
+
+    <h2>2.3 Dokumentasi API dengan Swagger</h2>
+    <p>Dokumentasi API telah dibuat secara otomatis menggunakan library L5-Swagger dengan memanfaatkan anotasi OpenApi pada controller. Seluruh resource route untuk <code>/mahasiswa</code> (GET, POST, PUT, DELETE) telah terdaftar dan dapat diakses melalui browser pada path <code>/api/documentation</code>.</p>
+
+
+    <h1 class="bab">BAB III<br>IMPLEMENTASI FRONTEND (FLUTTER)</h1>
+
+    <h2>3.1 Menampilkan Daftar Mahasiswa (ListView)</h2>
+    <p>Halaman <code>student_list_screen.dart</code> bertugas menampilkan data mahasiswa yang diambil dari API secara real-time. Beberapa komponen utama yang digunakan meliputi:</p>
+    <ul>
+        <li><strong>Loading State:</strong> Menggunakan <code>CircularProgressIndicator</code> sebagai indikator saat proses fetching data berlangsung.</li>
+        <li><strong>RefreshIndicator:</strong> Implementasi fitur "Pull to Refresh" untuk memudahkan pengguna dalam memuat ulang data terbaru dari server.</li>
+        <li><strong>ListView.builder:</strong> Digunakan untuk merender daftar mahasiswa secara efisien guna menjaga performa aplikasi.</li>
+    </ul>
+
+    <h2>3.2 Form Tambah & Upload Foto</h2>
+    <p>Halaman <code>mahasiswa_form_screen.dart</code> berfungsi untuk menambahkan data mahasiswa baru. Implementasi pada halaman ini mencakup:</p>
+    <ul>
+        <li><strong>Image Picker:</strong> Integrasi dengan galeri perangkat untuk memungkinkan pengguna memilih foto profil.</li>
+        <li><strong>Multipart Request:</strong> Menggunakan <code>http.MultipartRequest</code> untuk mengirim data teks dan file gambar (foto profil) secara bersamaan ke endpoint Laravel API.</li>
+    </ul>
+
+
+    <h1 class="bab">BAB IV<br>PENGUJIAN (POSTMAN)</h1>
+
+    <h2>4.1 Skenario Pengujian</h2>
+    <p>Seluruh endpoint API telah melalui tahap pengujian menggunakan Postman. Hasil pengujian menunjukkan bahwa API mengembalikan respons JSON sesuai dengan format standar:</p>
+    <ol>
+        <li><strong>GET All Students:</strong> Berhasil mengembalikan array objek yang berisi daftar mahasiswa.</li>
+        <li><strong>POST New Student:</strong> Berhasil menyimpan data mahasiswa baru beserta file gambar (upload multipart).</li>
+        <li><strong>GET By ID:</strong> Berhasil menampilkan detail spesifik berdasarkan ID mahasiswa.</li>
+        <li><strong>PUT Update:</strong> Berhasil memperbarui field data mahasiswa seperti nama atau jurusan.</li>
+        <li><strong>DELETE:</strong> Berhasil menghapus data mahasiswa beserta file fotonya dari storage server.</li>
+    </ol>
+    <p><em>(Catatan: Screenshot hasil pengujian Postman dan tampilan aplikasi dapat disisipkan pada bagian ini).</em></p>
+
+
+    <h1 class="bab">BAB V<br>KESIMPULAN</h1>
+
+    <h2>5.1 Identitas dan Branding Aplikasi</h2>
+    <p>Aplikasi ini dibangun sebagai bagian dari ekosistem <strong>AKADEMIKA UNIKOM</strong>. Antarmuka aplikasi telah disesuaikan dengan menggunakan logo High Resolution Transparan UNIKOM 2025 serta tipografi font Poppins (Regular, Bold, Ultra Bold) untuk menonjolkan identitas yang profesional. Aplikasi secara resmi mencantumkan kredit pengembang pada bagian footer.</p>
+    <p>Secara keseluruhan, integrasi antara Laravel API di sisi Backend dan aplikasi Flutter di sisi Frontend telah berjalan dengan baik, memungkinkan operasi CRUD penuh serta manajemen upload file secara efisien.</p>
+
+</body>
+</html>
