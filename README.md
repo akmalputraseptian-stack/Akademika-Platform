@@ -1,4 +1,4 @@
-# Akademika - Academic Information System
+# Akademika Platform
 
 ![Flutter](https://img.shields.io/badge/Frontend-Flutter-blue?style=for-the-badge&logo=flutter)
 ![Laravel](https://img.shields.io/badge/Backend-Laravel-red?style=for-the-badge&logo=laravel)
