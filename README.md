@@ -1,67 +1,141 @@
-# Akademika Platform
+<div align="center">
 
-![Flutter](https://img.shields.io/badge/Frontend-Flutter-blue?style=for-the-badge&logo=flutter)
-![Laravel](https://img.shields.io/badge/Backend-Laravel-red?style=for-the-badge&logo=laravel)
-![Status](https://img.shields.io/badge/Status-Completed-success?style=for-the-badge)
+# 🎓 Akademika Platform
 
-A mobile-first academic information system built with Flutter and backed by a Laravel RESTful API. Designed for efficient management of academic data, including digital identification, AI assistance, and study plan administration.
+**A Next-Generation Academic Information System**
 
-## Core Features
+[![Flutter](https://img.shields.io/badge/Frontend-Flutter_3.x-02569B?style=for-the-badge&logo=flutter&logoColor=white)](https://flutter.dev)
+[![Laravel](https://img.shields.io/badge/Backend-Laravel_11.x-FF2D20?style=for-the-badge&logo=laravel&logoColor=white)](https://laravel.com)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](https://opensource.org/licenses/MIT)
 
-- **Secure Authentication**: Laravel Sanctum based token authentication.
-- **3D Digital ID**: Interactive 3D rendering of the student identification card.
-- **AI Assistant**: Integrated AI query system for academic-related contexts.
-- **Study Plan Management (KRS)**: Structured viewing and management of student curriculums by semester.
-- **Complete CRUD Operations**: Full student data management including multipart profile picture uploads.
-- **Automated API Documentation**: OpenAPI specification generated via L5-Swagger.
+*Streamlining student administration with mobile-first architecture, AI integration, and interactive 3D elements.*
 
-## Technical Stack
+</div>
 
-### Backend (REST API)
-- **Framework**: Laravel 11.x
-- **Auth**: Laravel Sanctum
-- **Docs**: L5-Swagger (OpenAPI)
-- **Database**: SQLite / MySQL
+---
 
-### Frontend (Mobile Application)
-- **Framework**: Flutter
-- **HTTP Client**: `http`
-- **State Management**: Provider
-- **Design System**: Material Design (Custom Poppins Typography)
+## 📑 Table of Contents
+- [About the Project](#-about-the-project)
+- [Key Features](#-key-features)
+- [Tech Stack](#-tech-stack)
+- [Architecture](#-architecture)
+- [Getting Started](#-getting-started)
+- [API Documentation](#-api-documentation)
+- [Developer](#-developer)
 
-## Project Structure
+---
 
-A simple monorepo structure separating the client and server applications:
+## 📖 About the Project
 
-- `/akademika-api` - Laravel backend source code.
-- `/AkademikaFlutter` - Flutter frontend source code.
+**Akademika Platform** is an integrated mobile and backend solution designed to manage university student data efficiently. By leveraging the power of **Flutter** for a seamless cross-platform mobile experience and **Laravel** for a robust, secure RESTful API, this platform modernizes traditional academic administration.
 
-## Local Development Guide
+It goes beyond basic CRUD operations by introducing features like a **3D Digital ID Card (KTM)** and an **AI-powered Academic Assistant**, wrapped in a sleek, customized Material Design interface matching university branding guidelines.
 
-### 1. Backend Setup (Laravel)
-Ensure PHP, Composer, and the required database extensions are installed.
+---
+
+## ✨ Key Features
+
+| Feature | Description |
+| :--- | :--- |
+| 🔒 **Secure Auth** | Token-based authentication utilizing Laravel Sanctum. |
+| 🪪 **3D Digital ID** | An interactive, 3D-rendered student identification card. |
+| 🤖 **AI Assistant** | Integrated AI query system to assist students with academic contexts. |
+| 📅 **Study Plan (KRS)** | Structured viewing and management of student curriculums by semester. |
+| 🔄 **Complete CRUD** | Full student data management, including multipart profile picture uploads. |
+| 📚 **Auto API Docs** | OpenAPI specification generated automatically via L5-Swagger. |
+
+---
+
+## 🛠️ Tech Stack
+
+### Client (Mobile App)
+- **Framework:** Flutter
+- **State Management:** Provider
+- **Networking:** `http` package
+- **Design System:** Material Design with Custom Poppins Typography
+
+### Server (REST API)
+- **Framework:** Laravel 11.x
+- **Authentication:** Laravel Sanctum
+- **Documentation:** L5-Swagger (OpenAPI 3.0)
+- **Database:** SQLite / MySQL ready
+
+---
+
+## 🏗️ Architecture
+
+The repository uses a straightforward monorepo structure to keep both ends of the platform unified:
+
+```text
+Akademika-Platform/
+├── akademika-api/       # Laravel backend application
+│   ├── app/Models/      # Eloquent ORM Models
+│   ├── app/Http/        # Controllers & Middleware
+│   └── routes/          # API & Web routes
+└── AkademikaFlutter/    # Flutter mobile application
+    ├── lib/screens/     # UI Views
+    ├── lib/services/    # API & External integrations
+    └── lib/models/      # Dart data classes
+```
+
+---
+
+## 🚀 Getting Started
+
+Follow these instructions to set up the project locally on your machine.
+
+### 1. Server Setup (Laravel)
+Ensure you have PHP (>= 8.2) and Composer installed.
 
 ```bash
+# Navigate to the backend directory
 cd akademika-api
+
+# Duplicate the environment file
 cp .env.example .env
+
+# Install PHP dependencies
 composer install
+
+# Generate application key & prepare database
 php artisan key:generate
 php artisan migrate --seed
 php artisan storage:link
+
+# Start the local development server
 php artisan serve
 ```
-> Note: The API serves on `http://localhost:8000`. Swagger documentation is accessible at `http://localhost:8000/api/documentation`.
+> The API will be available at `http://localhost:8000`.
 
-### 2. Frontend Setup (Flutter)
-Ensure the Flutter SDK is installed and a target device is running.
+### 2. Client Setup (Flutter)
+Ensure you have the Flutter SDK installed and an emulator running (or a physical device connected).
 
 ```bash
+# Navigate to the frontend directory
 cd AkademikaFlutter
+
+# Fetch Dart dependencies
 flutter pub get
+
+# Run the application
 flutter run
 ```
-> Note: For Android emulators, the backend URL in `lib/services/api_service.dart` defaults to `10.0.2.2`. Adjust to your local IPv4 address if testing on a physical device.
+> **Note for Android Emulators:** The default backend URL in `lib/services/api_service.dart` is set to `http://10.0.2.2:8000`. If you are using a physical device, update this to your machine's local IPv4 address.
 
 ---
-**Developed by Akmal Putra Septian**  
-*Computer Engineering 24 • Universitas Komputer Indonesia (UNIKOM)*
+
+## 📚 API Documentation
+
+This project uses Swagger for interactive API documentation. 
+Once the Laravel server is running, you can access the complete OpenAPI documentation at:
+
+👉 `http://localhost:8000/api/documentation`
+
+---
+
+## 👨‍💻 Developer
+
+Developed with precision by:
+
+**Akmal Putra Septian**  
+*Computer Engineering '24 • Universitas Komputer Indonesia (UNIKOM)*
